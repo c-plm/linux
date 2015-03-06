@@ -1,1 +1,18 @@
 #2015-3-6
+1、安装软件：
+[root@localhost ~]# yum install ftp vsftpd
+
+2、修改/etc/vsftpd/vsftpd.conf
+根据需求个性参数，并添加以内容：
+userlist_enable=YES
+userlist_deny=NO
+allow_writeable_chroot=YES
+chroot_local_user=YES
+chroot_list_enable=YES
+# (default follows)
+chroot_list_file=/etc/vsftpd/chroot_list
+
+3、关闭selinux
+
+4、配置防火墙：
+[root@localhost vsftpd]# firewall-cmd --zone=public --add-service=ftp
